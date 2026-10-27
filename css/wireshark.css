@@ -1,0 +1,289 @@
+/* =====================================================================
+   WIRESHARK 3-PANE PACKET INSPECTOR STYLES
+   Authentic protocol analyzer with display filters and hex dump
+   ===================================================================== */
+
+.wireshark-workbench {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0c0e;
+  overflow: hidden;
+}
+
+/* Toolbar & Filter Bar */
+.ws-toolbar {
+  padding: 10px 16px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ws-pcap-select {
+  padding: 6px 12px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.ws-filter-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ws-filter-input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ws-filter-input {
+  width: 100%;
+  padding: 6px 12px;
+  background-color: #101216;
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #fff;
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.ws-filter-input.valid {
+  background-color: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+}
+
+.ws-filter-input.invalid {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+}
+
+.ws-btn {
+  padding: 6px 12px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.ws-btn:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-active);
+  color: #fff;
+}
+
+.ws-btn.primary {
+  background-color: var(--accent-red);
+  border-color: var(--accent-red-bright);
+  color: #fff;
+}
+
+/* 3-PANE LAYOUT */
+.ws-panes-split {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 40% 32% 28%;
+  overflow: hidden;
+}
+
+/* PANE 1: PACKET LIST */
+.ws-packet-list-pane {
+  overflow-y: auto;
+  border-bottom: 2px solid var(--border-medium);
+  background-color: #0d0f12;
+}
+
+.ws-packet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  table-layout: fixed;
+}
+
+.ws-packet-table th {
+  position: sticky;
+  top: 0;
+  background-color: #16181d;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 6px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-medium);
+  user-select: none;
+}
+
+.ws-packet-table td {
+  padding: 4px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.ws-packet-row {
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.ws-packet-row:hover {
+  filter: brightness(1.15);
+}
+
+.ws-packet-row.selected {
+  background-color: #1e3a8a !important;
+  color: #ffffff !important;
+}
+
+/* Protocol Coloring Rules (Dark-Mode Adapted) */
+.ws-row-http { background-color: rgba(74, 222, 128, 0.08); color: #86efac; }
+.ws-row-dns { background-color: rgba(56, 189, 248, 0.08); color: #7dd3fc; }
+.ws-row-tcp { background-color: rgba(167, 139, 250, 0.08); color: #c4b5fd; }
+.ws-row-arp { background-color: rgba(251, 146, 60, 0.08); color: #fdba74; }
+.ws-row-icmp { background-color: rgba(244, 63, 94, 0.1); color: #fda4af; }
+.ws-row-tls { background-color: rgba(245, 158, 11, 0.08); color: #fcd34d; }
+
+/* PANE 2: PACKET DETAILS TREE */
+.ws-packet-details-pane {
+  overflow-y: auto;
+  padding: 10px 16px;
+  background-color: #0f1115;
+  border-bottom: 2px solid var(--border-medium);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.ws-tree-item {
+  margin-bottom: 4px;
+}
+
+.ws-tree-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-weight: 600;
+  user-select: none;
+}
+
+.ws-tree-header:hover {
+  background-color: var(--bg-card);
+}
+
+.ws-tree-icon {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.ws-tree-item.open > .ws-tree-header .ws-tree-icon {
+  transform: rotate(90deg);
+}
+
+.ws-tree-children {
+  margin-left: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ws-tree-item.open > .ws-tree-children {
+  display: flex;
+}
+
+.ws-leaf-field {
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.ws-leaf-field:hover, .ws-leaf-field.selected {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+/* PANE 3: HEX DUMP */
+.ws-hex-dump-pane {
+  overflow-y: auto;
+  padding: 10px 16px;
+  background-color: #0a0b0d;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #94a3b8;
+}
+
+.hex-line {
+  display: flex;
+  gap: 16px;
+}
+
+.hex-offset {
+  color: var(--text-muted);
+  width: 45px;
+  user-select: none;
+}
+
+.hex-bytes {
+  display: flex;
+  gap: 6px;
+  color: #cbd5e1;
+}
+
+.hex-ascii {
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+}
+
+.hex-highlight {
+  background-color: rgba(230, 57, 70, 0.35);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* FOLLOW TCP STREAM MODAL */
+.stream-dialog-body {
+  background-color: #08090a;
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  max-height: 400px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.stream-client-text {
+  color: #f87171; /* Red for client request */
+}
+
+.stream-server-text {
+  color: #60a5fa; /* Blue for server reply */
+}

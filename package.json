@@ -1,0 +1,13 @@
+{
+  "name": "dev-sahil-networking-studio",
+  "version": "1.0.0",
+  "description": "Dev. Sahil / Networking Studio - The Complete Cybersecurity Networking Foundation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 8000 .",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": ["networking", "cybersecurity", "interactive", "wireshark", "dev-sahil"],
+  "author": "Dev. Sahil",
+  "license": "MIT"
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev. Sahil / Networking Studio - The Complete Cybersecurity Networking Foundation</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Theme & Layout Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/chapters.css">
+  <link rel="stylesheet" href="css/simulators.css">
+  <link rel="stylesheet" href="css/wireshark.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ============================================================= -->
+    <!-- LEFT SIDEBAR                                                  -->
+    <!-- ============================================================= -->
+    <aside id="sidebar">
+      <!-- Brand Header: DEV. SAHIL STUDIO -->
+      <div class="sidebar-header modern-brand-header">
+        <div class="brand-studio-card" id="brand-home-link" onclick="window.StudioApp.showOverview()" title="Return to Course Overview">
+          <div class="brand-card-main">
+            <div class="brand-avatar-box">
+              <svg class="brand-emblem-svg" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L3 6.5v6c0 5.25 3.8 10.15 9 11.5 5.2-1.35 9-6.25 9-11.5v-6L12 2z" stroke="#ef4444" stroke-width="1.8" fill="rgba(239, 68, 68, 0.12)" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <div class="brand-info">
+              <div class="brand-title-row">
+                <span class="brand-author-name"> Dev. SAHIL </span>
+                <span class="brand-pro-badge">✔️</span>
+              </div>
+              <div class="brand-tagline">Networking  Studio </div>
+            </div>
+          </div>
+
+          <div class="brand-card-footer">
+            <div class="brand-live-status">
+              <span class="brand-live-dot"></span>
+              <span>23 Interactive Chapters</span>
+            </div>
+            <span class="brand-overview-hint">Overview ↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Search Trigger -->
+      <div class="sidebar-search-box">
+        <button class="search-bar-btn" id="search-trigger-btn">
+          <span class="search-placeholder">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Find a topic or protocol
+          </span>
+          <span class="search-shortcut-badge">/</span>
+        </button>
+      </div>
+
+      <!-- Quick Nav Buttons -->
+      <div class="sidebar-quick-nav">
+        <button class="nav-link-btn active" id="btn-nav-overview">
+          <span>Course overview</span>
+          <span class="arrow-up-right">↗</span>
+        </button>
+
+        <button class="nav-link-btn" id="btn-nav-terminal" onclick="window.StudioApp.openTerminal()">
+          <span>Cyber Terminal Lab</span>
+          <span style="font-family:var(--font-mono); font-size:10px; color:var(--accent-cyan);">_></span>
+        </button>
+
+        <button class="nav-link-btn" id="btn-nav-wireshark" onclick="window.StudioApp.openWireshark()">
+          <span>Wireshark Dissector</span>
+          <span style="font-family:var(--font-mono); font-size:10px; color:#a78bfa;">3-PANE</span>
+        </button>
+
+        <div class="nav-badge-pill selected" id="btn-active-lesson-indicator">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span id="current-badge-text">Interactive Curriculum</span>
+        </div>
+      </div>
+
+      <!-- Chapter Tree Section Title -->
+      <div class="sidebar-section-title">
+        <span id="sidebar-curriculum-label">COURSE CHAPTERS</span>
+        <span class="sidebar-section-count" id="sidebar-curriculum-count">23</span>
+      </div>
+
+      <!-- Scrollable Chapter / Screen Tree -->
+      <div class="sidebar-chapters-scroll" id="sidebar-scroll-list">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+
+      <!-- Offline Ready Footer -->
+      <div class="sidebar-footer">
+        <div class="offline-ready-badge">
+          <span class="status-dot"></span>
+          <span>LOCAL / OFFLINE READY</span>
+        </div>
+        <div class="offline-subtitle">
+          Dev. Sahil • Networking through a security lens
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================================================= -->
+    <!-- MAIN WORKSPACE WRAPPER                                        -->
+    <!-- ============================================================= -->
+    <div id="main-wrapper">
+      <!-- Topbar Header -->
+      <header id="topbar">
+        <div class="topbar-left">
+          <button class="btn-icon-toggle" id="btn-toggle-sidebar" title="Toggle Navigation Sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="course-headline modern-headline" id="topbar-headline">
+            <span class="headline-root-badge">DEV. SAHIL</span>
+            <span class="headline-title">NETWORKING STUDIO // CYBERSECURITY FOUNDATION</span>
+            <span class="headline-status-badge">ONLINE</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="action-pill-btn" id="btn-recording-guide">
+            Recording guide
+          </button>
+          <button class="action-pill-btn" id="btn-pause-motion">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            Pause motion
+          </button>
+          <button class="action-pill-btn" id="btn-focus-mode">
+            Focus view <span class="pill-shortcut">[F]</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Content Area -->
+      <main id="content-container">
+        <!-- Injected dynamically: Overview, Lesson View, Wireshark, or Terminal -->
+      </main>
+
+      <!-- Bottom Status Bar -->
+      <footer id="footer-bar">
+        <div class="footer-left">
+          DEV. SAHIL / NETWORKING STUDIO
+        </div>
+        <div class="footer-center">
+          Simulated networks. Real understanding.
+        </div>
+        <div class="footer-right footer-shortcut-trigger" onclick="document.getElementById('search-trigger-btn').click()">
+          Keyboard shortcuts <span class="mono">[/]</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODALS                                                        -->
+  <!-- ============================================================= -->
+
+  <!-- 1. Global Search Modal -->
+  <div class="modal-overlay" id="search-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Search Protocols, Concepts, & Cyber Attacks</span>
+        <button class="modal-close-btn" id="search-modal-close">&times;</button>
+      </div>
+      <div style="padding: 14px 20px 8px 20px; border-bottom: 1px solid var(--border-subtle);">
+        <input type="text" id="global-search-input" class="calc-input-field" placeholder="Search 23 chapters & 114 screens... e.g. TCP, ARP, DNS, CIDR, TLS, SYN Flood" style="width: 100%;">
+      </div>
+      <div class="modal-body" id="search-results-list" style="max-height: 400px; padding: 10px 20px;">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Recording & Lecture Guide Modal -->
+  <div class="modal-overlay" id="recording-guide-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Dev. Sahil Studio Recording & Lecture Guide</span>
+        <button class="modal-close-btn" id="guide-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="color:#fff; margin-bottom:8px;">Studio Production & Learning Blueprint</h3>
+        <p style="margin-bottom:14px;">Designed by Dev. Sahil for complete beginners to cybersecurity professionals. Every concept is broken down from scratch with live motion, real-life examples, and attack/defense lenses.</p>
+        
+        <div style="background:var(--bg-card); border-left:3px solid var(--accent-red); padding:12px 14px; margin-bottom:16px; border-radius:0 6px 6px 0;">
+          <strong>Focus View [F]:</strong> Tap <code class="mono">F</code> on your keyboard anytime to collapse the sidebar and expand the presentation view into full 16:9 ultra-clean widescreen mode.
+        </div>
+
+        <h4 style="color:#fff; margin-bottom:6px;">Pedagogical Flow For Each Chapter:</h4>
+        <ol style="margin-left:20px; display:flex; flex-direction:column; gap:8px; margin-bottom:18px;">
+          <li><strong>The Idea & Analogy:</strong> Simple real-world analogy (e.g. your home Wi-Fi box, mobile phone, laptop) so anyone starting from zero understands immediately.</li>
+          <li><strong>Interactive Pictorial Diagram:</strong> Change devices (Phone, Laptop, TV) and test scenarios (unplug cable, turn off Wi-Fi, test Guest Wi-Fi isolation).</li>
+          <li><strong>Live Bandwidth & Port Experimenter:</strong> User slides device count and port numbers to see bandwidth throttling, ping latency, and encryption status change live!</li>
+          <li><strong>The Cyber Security Lens:</strong> Red Team offensive exploit vs Blue Team defensive patch.</li>
+          <li><strong>Knowledge Check:</strong> Certification-level multiple choice question with step-by-step reasoning.</li>
+        </ol>
+
+        <h4 style="color:#fff; margin-bottom:6px;">Keyboard Shortcuts Cheat Sheet:</h4>
+        <ul style="margin-left:20px; display:flex; flex-direction:column; gap:4px; font-family:var(--font-mono); font-size:12px; color:#cbd5e1;">
+          <li><code style="color:var(--accent-red);">/</code> - Open global topic & protocol search</li>
+          <li><code style="color:var(--accent-red);">F</code> - Toggle distraction-free presentation mode</li>
+          <li><code style="color:var(--accent-red);">← / →</code> - Step backward / forward through chapter screens</li>
+          <li><code style="color:var(--accent-red);">ESC</code> - Close active modals and dialogs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Datasets & Simulators -->
+  <script src="js/data/chapters.js"></script>
+  <script src="js/simulators/packetEngine.js"></script>
+  <script src="js/simulators/interactiveNetworkLab.js"></script>
+  <script src="js/simulators/subnetCalc.js"></script>
+  <script src="js/simulators/arpSim.js"></script>
+  <script src="js/simulators/tcpHandshakeSim.js"></script>
+  <script src="js/simulators/dnsSim.js"></script>
+  <script src="js/simulators/wiresharkSim.js"></script>
+  <script src="js/simulators/chapterSimulators.js"></script>
+  <script src="js/simulators/terminalSim.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

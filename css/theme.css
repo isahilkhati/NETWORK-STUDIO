@@ -1,0 +1,112 @@
+/* =====================================================================
+   DEV. SAHIL - NETWORKING STUDIO THEME
+   Deep cyberpunk dark palette with crimson accents matching screenshots
+   ===================================================================== */
+
+:root {
+  --bg-primary: #090a0c;
+  --bg-secondary: #0f1013;
+  --bg-card: #131518;
+  --bg-card-hover: #181b20;
+  --bg-elevated: #1a1d22;
+  --bg-input: #101215;
+
+  --border-subtle: #1e2228;
+  --border-medium: #272c34;
+  --border-active: #3b424f;
+
+  --accent-red: #e63946;
+  --accent-red-bright: #ff3b3b;
+  --accent-red-glow: rgba(230, 57, 70, 0.25);
+  --accent-red-subtle: rgba(230, 57, 70, 0.1);
+
+  --accent-cyan: #00f0ff;
+  --accent-green: #00e676;
+  --accent-yellow: #ffb703;
+  --accent-purple: #9d4edd;
+  --accent-blue: #3a86ff;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9da3af;
+  --text-muted: #626875;
+  --text-code: #e2e8f0;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+
+  --sidebar-width: 320px;
+  --header-height: 60px;
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-active);
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Red arrow badge used in chapter cards */
+.arrow-up-right {
+  display: inline-block;
+  color: var(--accent-red);
+  font-weight: 500;
+  transition: transform var(--transition-fast);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
