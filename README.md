@@ -1,4 +1,5 @@
 # DEV. SAHIL / NETWORKING STUDIO
+Open source networking platform
 ### The Complete Cybersecurity Networking Foundation & Interactive Laboratory
 
 An ultra-rich, interactive live-motion educational platform engineered by **Dev. Sahil** for cybersecurity students, ethical hackers, and network engineers. Designed from ground zero so that anyone with zero prior knowledge can master every critical networking concept.
